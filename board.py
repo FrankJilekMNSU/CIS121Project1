@@ -1,7 +1,6 @@
 """
 board.py
 Defines board class and some constant values
-Contributors: Frank Jilek
 """
 
 

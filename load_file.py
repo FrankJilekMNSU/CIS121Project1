@@ -1,7 +1,6 @@
 """
 load_file.py
 Here lies the function to load the ship positions from a file
-Contributors: Frank Jilek
 """
 
 import board
