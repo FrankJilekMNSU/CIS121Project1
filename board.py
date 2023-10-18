@@ -1,6 +1,7 @@
 """
 board.py
 Defines board class and some constant values
+Contributors: Frank Jilek
 """
 
 
@@ -23,11 +24,13 @@ board_bit_hit = 8
 board_bit_ship = 7
 
 
-ships_dict = {0 : "", 1 : "Destroyer", 2 : "Submarine", 3 : "Cruiser", 4 : "Battleship", 5 : "Carrier"}
 
-ships_characters = ("~", "D", "S", "U", "B", "C", "@", "@", ".", "X", "X", "X", "X", "X", "X", "X")
+ship_dict = {0 : "", 1 : "Destroyer", 2 : "Submarine", 3 : "Cruiser", 4 : "Battleship", 5 : "Carrier"}
+ship_lengths = (0, 2, 3, 3, 4, 5)
+ship_characters = ("~", "D", "S", "U", "B", "C", "@", "@", ".", "X", "X", "X", "X", "X", "X", "X")
 
 class Board:
+	sunk_ships = [0, False, False, False, False, False]
 	def __init__(self, board_list, board_type):
 		self.board = board_list
 		self.type = board_type
@@ -39,14 +42,39 @@ class Board:
 		for y in range(0, board_height):
 			string += chr(0x41 + y)
 			for x in range(0, board_width):
-				string += (" %s" % ships_characters[self.board[y][x]])
+				string += (" %s" % ship_characters[self.board[y][x]])
 			string += "\n"
 		return string
 				
 	def try_hit(self, row, column):
+		
+		# Check if hit is out of bounds or if the space was already hit
 		if row < 0 or row > board_height or column < 0 or column > board_width or self.board[row][column] & board_bit_hit == board_bit_hit:
 			return board_move_invalid
+		# Check if there's a ship on the space
 		if self.board[row][column] & board_bit_ship != 0:
+			# Set the board to be hit on this spot (ship data stays intact)
 			self.board[row][column] |= board_bit_hit
 			return board_move_hit
+		# Nothing was hit. Miss
 		return board_move_miss
+
+	def check_ships(self):
+		# Check the ships that have been sunk by counting ship spaces that aren't hit
+		# Returns either that no ships have been hit or the ship that has been sunk this turn
+		# Should be run after every turn
+		ship_spots_left = {0 : 0, 1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0}
+		ship_sunk = 0
+		for y in range(0, board_height):
+			for x in range(0, board_width):
+				if self.board[y][x] & board_bit_hit == 0 and self.board[y][x] & board_bit_ship > 0:
+					ship_spots_left[self.board[y][x]] += 1
+		for ship in ship_spots_left.keys():
+			if ship == 0:
+				continue
+			if ship_spots_left[ship] == 0:
+				if self.sunk_ships[ship] == False:
+					# We can guarantee that the only ship that was sunk this turn is this one
+					ship_sunk = ship
+				self.sunk_ships[ship] = True
+		return ship_sunk
