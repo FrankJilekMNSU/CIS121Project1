@@ -1,10 +1,10 @@
 from board import *
 
 class Player:
-	boards = [0,0]
-	def __init__(self, board1, board2):
-		board[0] = board1
-		board[1] = board2 
+	def __init__(self, in_board):
+		self.ship_board = in_board
+		empty_row = []
+		self.attack_board = Board(create_empty_board(), board_type_enemy)
 		
 
 def player_turn(player_return):

@@ -80,3 +80,12 @@ class Board:
 					ship_sunk = ship
 				self.sunk_ships[ship] = True
 		return ship_sunk
+
+
+def create_emtpy_board():
+	empty_list = []
+	for i in range(0,board_width):
+		empty_list.append(0)
+	for i in range(0,board_height):
+		empty_list.append(empty_list.copy())
+	return empty_list
