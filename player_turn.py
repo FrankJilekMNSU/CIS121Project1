@@ -4,7 +4,7 @@ class Player:
 	def __init__(self, in_board, name):
 		self.ship_board = in_board
 		self.attack_board = Board(create_empty_board(), board_type_enemy)
-		self.name
+		self.name = name
 		
 
 def player_turn(player1, player2):
