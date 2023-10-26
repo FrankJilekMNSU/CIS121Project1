@@ -18,5 +18,5 @@ if __name__ == "__main__":
 		player_turn(players[current_player], players[opposing_player])
 		sunk = players[opposing_player].ship_board.check_ships()
 		if sunk > 0:
-			print("%s sunk %s's %s" % (player[current_player].name, player[opposing_player].name, ship_dict[sunk]) )
+			print("%s sunk %s's %s" % (players[current_player].name, players[opposing_player].name, ship_dict[sunk]) )
 		current_player = opposing_player
