@@ -58,6 +58,9 @@ class Board:
 		# Nothing was hit. Miss
 		return board_move_miss
 
+	def all_ships_sunk(self):
+		return sunk_ships[1] and sunk_ships[2] and sunk_ships[3] and sunk_ships[4] and sunk_ships[5]
+
 	def check_ships(self):
 		# Check the ships that have been sunk by counting ship spaces that aren't hit
 		# Returns either that no ships have been hit or the ship that has been sunk this turn
