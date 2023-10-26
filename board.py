@@ -48,7 +48,7 @@ class Board:
 	def try_hit(self, row, column):
 		
 		# Check if hit is out of bounds or if the space was already hit
-		if row < 0 or row > board_height or column < 0 or column > board_width or self.board[row][column] & board_bit_hit == board_bit_hit:
+		if row < 0 or row >= board_height or column < 0 or column >= board_width or self.board[row][column] & board_bit_hit == board_bit_hit:
 			return board_move_invalid
 		# Set the board to be hit on this spot (ship data stays intact)
 		self.board[row][column] |= board_bit_hit

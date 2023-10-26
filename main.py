@@ -20,3 +20,4 @@ if __name__ == "__main__":
 		if sunk > 0:
 			print("%s sunk %s's %s" % (players[current_player].name, players[opposing_player].name, ship_dict[sunk]) )
 		current_player = opposing_player
+	print("%s WINS!" % players[(current_player + 1) % 2].name)
