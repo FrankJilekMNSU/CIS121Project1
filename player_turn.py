@@ -3,7 +3,6 @@ from board import *
 class Player:
 	def __init__(self, in_board):
 		self.ship_board = in_board
-		empty_row = []
 		self.attack_board = Board(create_empty_board(), board_type_enemy)
 		
 
