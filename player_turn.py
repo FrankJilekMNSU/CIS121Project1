@@ -10,6 +10,8 @@ class Player:
 def player_turn(player1, player2):
 	valid_move = False
 	hit = 0
+	row = 0
+	column = 0
 	while not valid_move:
 		player_input = input(f"{player1.name} Attack: ")
 		if len(player_input) < 2 or len(player_input) > 3:
@@ -27,6 +29,8 @@ def player_turn(player1, player2):
 		else:
 			valid_move = True
 	if hit == board_move_hit:
+		player1.attack_board.board[row][column] = 9
 		print("Hit!")
 	else:
+		player1.attack_board.board[row][column] = 8
 		print("Miss!")
