@@ -50,16 +50,16 @@ class Board:
 		# Check if hit is out of bounds or if the space was already hit
 		if row < 0 or row > board_height or column < 0 or column > board_width or self.board[row][column] & board_bit_hit == board_bit_hit:
 			return board_move_invalid
+		# Set the board to be hit on this spot (ship data stays intact)
+		self.board[row][column] |= board_bit_hit
 		# Check if there's a ship on the space
 		if self.board[row][column] & board_bit_ship != 0:
-			# Set the board to be hit on this spot (ship data stays intact)
-			self.board[row][column] |= board_bit_hit
 			return board_move_hit
 		# Nothing was hit. Miss
 		return board_move_miss
 
 	def all_ships_sunk(self):
-		return sunk_ships[1] and sunk_ships[2] and sunk_ships[3] and sunk_ships[4] and sunk_ships[5]
+		return self.sunk_ships[1] and self.sunk_ships[2] and self.sunk_ships[3] and self.sunk_ships[4] and self.sunk_ships[5]
 
 	def check_ships(self):
 		# Check the ships that have been sunk by counting ship spaces that aren't hit
@@ -84,8 +84,9 @@ class Board:
 
 def create_empty_board():
 	empty_list = []
+	empty_row = []
 	for i in range(0,board_width):
-		empty_list.append(0)
+		empty_row.append(0)
 	for i in range(0,board_height):
-		empty_list.append(empty_list.copy())
+		empty_list.append(empty_row.copy())
 	return empty_list
