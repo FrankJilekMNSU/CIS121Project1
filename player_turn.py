@@ -8,6 +8,10 @@ class Player:
 		
 
 def player_turn(player1, player2):
+	print(f"{player1.name}'s turn. Press any key to continue...")
+	input()
+	print(player1.ship_board)
+	print(player1.attack_board)
 	valid_move = False
 	hit = 0
 	row = 0
@@ -17,9 +21,9 @@ def player_turn(player1, player2):
 		if len(player_input) < 2 or len(player_input) > 3:
 			valid_move = False
 			print("Invalid input")
-		column = ord(player_input[0]) - 0x41
-		row = int(player_input[1:len(player_input)])-1
-		if column < 0 or column > board_height or row < 0 or row > board_width:
+		row = ord(player_input[0]) - 0x41
+		column = int(player_input[1:len(player_input)])-1
+		if column < 0 or column > board_width or row < 0 or row > board_height:
 			valid_move = False
 			print("Invalid location")
 		hit = player2.ship_board.try_hit(row, column)
