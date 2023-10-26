@@ -26,6 +26,7 @@ def player_turn(player1, player2):
 		if column < 0 or column > board_width or row < 0 or row > board_height:
 			valid_move = False
 			print("Invalid location")
+			continue
 		hit = player2.ship_board.try_hit(row, column)
 		if hit == board_move_invalid:
 			valid_move = False
