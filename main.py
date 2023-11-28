@@ -1,3 +1,9 @@
+"""
+main.py
+Start the program execution
+Also contains game loop
+"""
+
 from load_file import load_board
 from board import *
 from player_turn import *
