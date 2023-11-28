@@ -15,8 +15,8 @@ def is_not_number(character):
 def player_turn(player1, player2):
 	print(f"{player1.name}'s turn. Press any key to continue...")
 	input()
-	print(player1.ship_board)
 	print(player1.attack_board)
+	print(player1.ship_board)
 	valid_move = False
 	hit = 0
 	row = 0

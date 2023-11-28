@@ -3,6 +3,7 @@ from board import *
 from player_turn import *
 
 if __name__ == "__main__":
+	# Get player data
 	player1_name = input("Player 1, enter name: ")
 	player1_filename = input("%s, enter the file to load ships from: " % player1_name)
 	player1_board = Board(load_board(player1_filename), board_type_player)
@@ -13,8 +14,9 @@ if __name__ == "__main__":
 	players = [Player(player1_board, player1_name), Player(player2_board, player2_name)]
 
 	current_player = 0
+	# Keep the game loop going as long as a player's ships haven't all sunk
 	while not players[0].ship_board.all_ships_sunk() and not players[1].ship_board.all_ships_sunk():
-		opposing_player = (current_player + 1) % 2
+		opposing_player = (current_player + 1) % 2 # Change player
 		player_turn(players[current_player], players[opposing_player])
 		sunk = players[opposing_player].ship_board.check_ships()
 		if sunk > 0:

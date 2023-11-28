@@ -4,6 +4,7 @@ Defines board class and some constant values
 """
 
 
+# Constants
 board_type_enemy = 0
 board_type_player = 1
 
