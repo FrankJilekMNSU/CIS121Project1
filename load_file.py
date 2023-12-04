@@ -1,4 +1,9 @@
 """
+Creston Dorothy
+Frank Jilek
+August Peterson
+CIS 121 Final Project
+
 load_file.py
 Here lies the function to load the ship positions from a file
 """
