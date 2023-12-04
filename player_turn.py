@@ -1,5 +1,10 @@
 from board import *
 """
+Creston Dorothy
+Frank Jilek
+August Peterson
+CIS 121 Final Project
+
 player_turn.py
 Contains the function executed in the main game loop
 """
