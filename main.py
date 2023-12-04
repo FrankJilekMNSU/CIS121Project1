@@ -1,4 +1,9 @@
 """
+Creston Dorothy
+Frank Jilek
+August Peterson
+CIS 121 Final Project
+
 main.py
 Start the program execution
 Also contains game loop
