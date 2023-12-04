@@ -1,4 +1,9 @@
 """
+Creston Dorothy
+Frank Jilek
+August Peterson
+CIS 121 Final Project
+
 board.py
 Defines board class and some constant values
 """
